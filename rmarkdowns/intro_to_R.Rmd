@@ -107,6 +107,19 @@ my_age + 5 # how old will you be in 5 years?
 
 #### <span style="color: red;">Challenge 1</span>
 Create a my_name variable with your name assigned to the variable instead of "Victoria DelaCruz". Then, create a my_age variable with your age. 
+```{r}
+my_name = "Refiloe Sekaleli"
+my_name
+
+```
+í
+```{r}
+my_age <- 30
+my_age
+my_age +4
+
+```
+
 
 #### Different Types of Data
 
@@ -248,6 +261,18 @@ library(naniar) # helpful package to view missing data
 ```
 
 Note: if you run into an error loading the `naniar` package, run the install.packages() code in the console that we went through earlier
+```{r}
+install.packages("naniar")
+```
+í
+```{r}
+install.packages("naniar")
+```
+```{r}
+library(naniar)
+```
+
+
 
 ```{r}
 sdr_data %>% 
@@ -294,6 +319,32 @@ What if we want to subset specific rows? We can do this by using the filter func
 #### <span style="color: red;">Challenge 2</span>
 Using the `select()` function, select two new SDG goal scores. Assign it to a variable named `SDG_scores`. 
 
+```{r}
+new_SDG_Goal_Score <- "SDG_Scores"
+sdr_data %>% 
+  select(goal_1_score, goal_2_score)
+
+```
+
+```{r}
+sdr_data %>% 
+  select(goal_1_score, goal_2_score)
+sdr_data %>% 
+  select(goal_1_score, goal_2_score) = "SDG_Scores"
+
+```
+
+```{r}
+new_SDG_Goal_Score <- "SDG_Scores"
+sdr_data %>% 
+  select(goal_1_score, goal_2_score)
+```
+```{r}
+SDG_Scores <- sdr_data %>% 
+  select(goal_1_score, goal_2_score)
+
+```
+
 *2. filter()*
 
 Similarly to select, `filter()` can be used to extract specific rows. Let's try this out by filtering our data for those within the Oceania region.
@@ -313,6 +364,11 @@ Notes:
 
 #### <span style="color: red;">Challenge 3</span>
 Using the `filter()` function, filter for another region other than Oceania. Assign it to a variable named `new_region`. 
+```{r}
+new_region = sdr_data %>% 
+  filter(regions_used_for_the_sdr == "Sub-Saharan Africa")
+```
+
 
 **Important**
 
