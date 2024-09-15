@@ -1,0 +1,449 @@
+---
+title: "GISSR_W1_REFILOE SEKALELI"
+author: "R SEKALELI"
+date: "2024-09-15"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+í
+```{r}
+library(sf)
+```
+```{r}
+install.packages("sf")
+```
+library(sf)
+```{r}
+library(sf)
+```
+```{r}
+library(tidyverse)
+```
+```{r}
+install.packages("tidyverse")
+```
+
+```{r}
+library(tidyverse)
+```
+```{r}
+```
+
+
+```{r}
+install.packages("rnaturalearth")
+```
+```{r}
+library(rnaturalearth)
+```
+```{r}
+install.package("rnaturalearthdata")
+```
+```{r}
+install.packages("rnaturalearthdata")
+```
+
+```{r}
+library(rnaturalearthdata)
+```
+
+
+```{r}
+install.packages("rnaturalearthhires")
+```
+```{r}
+remotes::install_github("ropensci/rnaturalearthhires")
+```
+
+```{r}
+install.packages("remotes")
+```
+```{r}
+remotes::install_github("ropensci/rnaturalearthhires")
+```
+
+```{r}
+library(rnaturalearthhires)
+```
+
+```{r}
+world <- ne_countries(scale = "medium", returnclass = "sf")
+class(world)
+```
+```{r}
+ggplot(data = world) +
+    geom_sf()
+```
+```{r}
+ggplot(data = world) +
+    geom_sf() +
+    xlab("Longitude") + ylab("Latitude") 
+```
+```{r}
+ggplot(data = world) +
+    geom_sf() +
+    ggtitle("Countries of the World", subtitle = "Created by Refiloe Sekaleli
+```
+```{r}
+ggplot(data = world) +
+    geom_sf() +
+    ggtitle("Countries of the World", subtitle = "Created by Refiloe Sekaleli)
+```
+
+```{r}
+ggplot(data = world) +
+    geom_sf() +
+    ggtitle("Countries of the World", subtitle = "Created by Refiloe Sekaleli")
+```
+
+```{r}
+world_without_antarctica <- world %>% 
+  filter(iso_a3 != "ATA")
+```
+```{r}
+ggplot() + 
+  geom_sf(data = world_without_antarctica)
+```
+
+```{r}
+ggplot() + 
+  geom_sf(data = world_without_antarctica) +
+    ggtitle("Countries of the World", subtitle = "without Antarctica")
+```
+```{r}
+ggplot() + 
+  geom_sf(data = world_without_antarctica, 
+          fill = "#669438", color = "#e9d66b", size = 0.30) +
+  ggtitle("Countries of the World", subtitle = "without Antarctica")
+```
+
+```{r}
+ggplot() + 
+  geom_sf(data = world_without_antarctica, 
+          fill = "#669438", color = "#e9d66b", size = 0.25) +
+  ggtitle("Countries of the World", subtitle = "without Antarctica")+
+  theme_void()
+```
+
+
+```{r}
+ggplot() + 
+  geom_sf(data = world_without_antarctica, 
+          aes(fill = as.factor(mapcolor7)),
+          color = "#401D16", size = 0.25) +
+  scale_fill_brewer(palette = "Set1") +
+  guides(fill = "none") +
+  theme_void()
+```
+```{r}
+st_crs(world_without_antarctica)
+```
+```{r}
+install.packages("sf")
+```
+```{r}
+library(sf)
+```
+```{r}
+st_crs(world_without_antarctica)
+```
+```{r}
+ggplot() + 
+  geom_sf(data = world_without_antarctica, 
+          fill = "#669438", color = "#32481B", size = 0.25) +
+  coord_sf(crs = st_crs("ESRI:54030")) +  # Robinson
+  # Or use the name instead of the number
+  # coord_sf(crs = "+proj=robin")
+  ggtitle("Countries of the World", subtitle = "Robinson Projection")+
+  theme_void()
+```
+```{r}
+ggplot() + 
+  geom_sf(data = world_without_antarctica, 
+          fill = "#669438", color = "#32481B", size = 0.25) +
+  coord_sf(crs = st_crs("ESRI:54030")) +  # Robinson
+  # Or use the name instead of the number
+  # coord_sf(crs = "+proj=robin")
+  ggtitle("Countries of the World", subtitle = "Robinson Projection")+
+  theme_void()
+```
+```{r}
+library(tidyverse)
+```
+
+```{r}
+ggplot() + 
+  geom_sf(data = world_without_antarctica, 
+          fill = "#669438", color = "#32481B", size = 0.25) +
+  coord_sf(crs = st_crs("ESRI:54030")) +  # Robinson
+  # Or use the name instead of the number
+  # coord_sf(crs = "+proj=robin")
+  ggtitle("Countries of the World", subtitle = "Robinson Projection")+
+  theme_void()
+```
+```{r}
+ggplot(data = world) +
+  geom_sf(fill = "#669438", color = "#32481B", size = 0.25) +
+    coord_sf(crs = "+proj=ortho +lat_0=-29 +lon_0=27 ") +
+  ggtitle("Maseru, MS as the Center of the World", subtitle = "Orthographic Azimuthal")+
+  theme_void()
+```
+
+```{r}
+library(tidyverse)
+```
+```{r}
+library(sf)
+```
+
+```{r}
+library(rnaturalearth)
+```
+```{r}
+library(rnaturalearthdata)
+```
+```{r}
+library(rnaturalearthhires)
+```
+```{r}
+world <- ne_countries(scale = "medium", returnclass = "sf")
+class(world)
+```
+
+```{r}
+ggplot(data = world) +
+    geom_sf() +
+    coord_sf(xlim = c(-29, -9), ylim = c(27, 37), expand = FALSE) +
+    ggtitle("Ha foso southwest of Berea")+
+    theme_void()
+```
+```{r}
+ggplot(data = world) +
+    geom_sf() +
+    coord_sf(xlim = c(-29.29, -39.29), ylim = c(27.53, 37.53), expand = FALSE) +
+    ggtitle("Ha foso southwest of Berea")+
+    theme_void()
+```
+```{r}
+ggplot(data = world) +
+    geom_sf() +
+    coord_sf(xlim = c(27.53, 37.53), ylim = c(-29.29, -39.29), expand = FALSE) +
+    ggtitle("Ha foso southwest of Berea")+
+    theme_void()
+```
+
+```{r}
+states <- (ne_states(country = "Lesotho"))
+```
+
+```{r}
+ggplot() +
+    geom_sf(data = world) +
+    geom_sf(data = states) +
+    coord_sf(xlim = c(27.57, 37.57), ylim = c(-29.26, -39.26), expand = FALSE) +
+    ggtitle("Ha foso southwest of Berea")+
+    theme_void()
+```
+```{r}
+df_layers_cultural
+```
+```{r}
+pacific_groups <- ne_download(
+  scale = 50,
+  type = "admin_0_pacific_groupings"
+)
+```
+
+```{r}
+lakes50 <- ne_download(
+  scale = 50, 
+  type = "lakes", 
+  category = "physical")
+```
+```{r}
+rivers50 <- ne_download(
+  scale = 50,
+  type = "rivers_lake_centerlines",
+  category = "physical",
+  returnclass = "sf"
+)
+```
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+library(sf)
+```
+```{r}
+library(rnaturalearth)
+```
+```{r}
+library(rnaturalearthdata)
+```
+```{r}
+library(rnaturalearthhires)
+```
+```{r}
+world <- ne_countries(scale = "medium", returnclass = "sf")
+class(world)
+```
+```{r}
+ggplot() +
+    geom_sf(data = world) +
+    geom_sf(data = states) +
+    coord_sf(xlim = c(27.57, 37.57), ylim = c(-29.26, -39.26), expand = FALSE) +
+    ggtitle("Ha foso southwest of Berea")+
+    theme_void()
+```
+```{r}
+ggplot(data = world) +
+    geom_sf() +
+   coord_sf(xlim = c(27.57, 37.57), ylim = c(-29.26, -39.26), expand = FALSE) +
+    ggtitle("Ha foso southwest of Berea")+
+    theme_void()
+```
+```{r}
+states <- (ne_states(country = "Lesotho"))
+```
+
+```{r}
+ggplot() +
+    geom_sf(data = world) +
+    geom_sf(data = states) +
+       coord_sf(xlim = c(27.57, 37.57), ylim = c(-29.26, -39.26), expand = FALSE) +
+    ggtitle("Ha foso southwest of Berea")+
+    theme_void()
+```
+
+```{r}
+df_layers_cultural
+```
+
+```{r}
+pacific_groups <- ne_download(
+  scale = 50,
+  type = "admin_0_pacific_groupings"
+)
+```
+```{r}
+pacific_groups <- ne_download(
+  scale = 50,
+  type = "admin_0_pacific_groupings"
+)
+```
+```{r}
+lakes50 <- ne_download(
+  scale = 50, 
+  type = "lakes", 
+  category = "physical")
+```
+```{r}
+lakes50 <- ne_download(
+  scale = 50, 
+  type = "lakes", 
+  category = "physical")
+```
+```{r}
+rivers50 <- ne_download(
+  scale = 50,
+  type = "rivers_lake_centerlines",
+  category = "physical",
+  returnclass = "sf"
+```
+```{r}
+rivers50 <- ne_download(
+  scale = 50,
+  type = "rivers_lake_centerlines",
+  category = "physical",
+  returnclass = "sf"
+)
+```
+
+```{r}
+ggplot() +
+    geom_sf(data = world) +
+    geom_sf(data = states) +
+    geom_sf(data = lakes50) +
+    geom_sf(data = rivers50) +
+    coord_sf(xlim = c(27.57, 37.57), ylim = c(-29.26, -39.26), expand = FALSE) +
+    ggtitle("Ha foso southwest of Berea")+
+    theme_void()
+```
+```{r}
+```
+
+
+```{r}
+ggplot() +
+    geom_sf(data = world, fill = "#d0d3d4") +
+    geom_sf(data = states, fill = "#d5dbdb", size = 0.25) +
+    geom_sf(data = lakes50, fill = "#1a5276", color = "darkgrey") +
+    geom_sf(data = rivers50, color = "#3498db", size = 0.15) +
+    geom_sf_text(data = states, aes(label = name), size = 5, fontface = "bold", nudge_y = states$nudge_y) +
+    coord_sf(xlim = c(27.57, 37.57), ylim = c(-29.26, -39.26), expand = FALSE) +
+    ggtitle("Ha foso southwest of Berea")+
+    theme_void()
+```
+
+
+```{r}
+ggplot() +
+    geom_sf(data = world, fill = "#d0d3d4") +
+    geom_sf(data = states, fill = "#d5dbdb", size = 0.25) +
+    geom_sf(data = lakes50, fill = "#1a5276", color = "darkgrey") +
+    geom_sf(data = rivers50, color = "#3498db", size = 0.15) +
+    geom_sf_text(data = states, aes(label = name), size = 5, fontface = "bold", nudge_y = states$nudge_y) +
+    coord_sf(xlim = c(27.57, 37.57), ylim = c(-29.26, -39.26), expand = FALSE) +
+    ggtitle("Ha foso southwest of Berea")+
+    theme_void()
+```
+```{r}
+ggplot() +
+    geom_sf(data = world, fill = "#d0d3d4") +
+    geom_sf(data = states, fill = "#d5dbdb", size = 0.25) +
+    geom_sf(data = lakes50, fill = "#1a5276", color = "darkgrey") +
+    geom_sf(data = rivers50, color = "#3498db", size = 0.15) +
+    geom_sf_text(data = states, aes(label = name), size = 2, fontface = "bold", nudge_y = states$nudge_y) +
+    coord_sf(xlim = c(27.57, 37.57), ylim = c(-29.26, -39.26), expand = FALSE) +
+    ggtitle("Ha foso southwest of Berea")+
+    theme_void()
+```
+```{r}
+ggplot() +
+   geom_sf(data = world, fill = "#d0d3d4") +
+    geom_sf(data = states, fill = "#d5dbdb", size = 0.25) +
+    geom_sf(data = lakes50, fill = "#1a5276", color = "darkgrey") +
+    geom_sf(data = rivers50, color = "#3498db", size = 0.15) +`
+    geom_sf(data = Ha-Foso, fill = "antiquewhite2", color = "red")+
+    geom_sf_text(data = states, aes(label = name), size = 2, fontface = "bold", nudge_y = states$nudge_y) +
+    coord_sf(xlim = c(27.57, 37.57), ylim = c(-29.26, -39.26), expand = FALSE)+
+    ggtitle("Ha foso southwest of Berea")+
+      theme_void()
+```
+
+
