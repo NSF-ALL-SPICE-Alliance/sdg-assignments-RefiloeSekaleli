@@ -1,0 +1,136 @@
+```{r}
+library(tidyverse)
+```
+
+```{r}
+library(sf)
+```
+```{r}
+library(leaflet)
+library(osmdata)
+```
+```{r}
+available_features()
+```
+```{r}
+available_tags("healthcare")
+```
+```{r}
+available_tags("amenity")
+```
+```{r}
+bb <- getbb("HA FOSO")
+bb
+```
+```{r}
+bb %>%
+  opq()
+```
+```{r}
+schools <- bb %>%
+  opq() %>%
+  add_osm_feature(key = "amenity", value = "school") %>%
+  osmdata_sf()
+```
+```{r}
+schools
+```
+```{r}
+schools$meta
+```
+```{r}
+schools$osm_polygons
+```
+```{r}
+schools$osm_points
+```
+```{r}
+ggplot() +
+  geom_sf(data = schools$osm_polygons) +
+  geom_sf_text(data = schools$osm_polygons, aes(label = name), size = 2, hjust = 0) +
+  coord_sf(xlim = c(27.55173, 27.57521), ylim = c(-29.28752, -29.25737), expand = FALSE)
+```
+```{r}
+`{r}
+streets <- bb %>%
+  opq() %>%
+  add_osm_feature("highway", c("motorway", "primary", "secondary", "tertiary")) %>%
+  osmdata_sf()
+```
+```{r}
+streets <- bb %>%
+  opq() %>%
+  add_osm_feature("highway", c("motorway", "primary", "secondary", "tertiary")) %>%
+  osmdata_sf()
+```
+```{r}
+streets
+```
+
+```{r}
+streets$osm_lines 
+```
+```{r}
+small_streets <- bb %>%
+  opq() %>%
+  add_osm_feature(key = "highway", value = c("residential", "living_street", "unclassified", "service", "footway")) %>%
+  osmdata_sf()
+```
+
+```{r}
+small_streets
+```
+```{r}
+clinic<- bb %>%
+  opq() %>%
+  add_osm_feature(key = "amenity", value = "clinic") %>%
+  osmdata_sf()
+```
+```{r}
+clinic
+```
+```{r}
+pharmacy<- bb %>%
+  opq() %>%
+  add_osm_feature(key = "amenity", value = "pharmacy") %>%
+  osmdata_sf()
+```
+```{r}
+pharmacy
+```
+
+```{r}
+place_of_worship<- bb %>%
+  opq() %>%
+  add_osm_feature(key = "amenity", value = "place_of_worship") %>%
+  osmdata_sf()
+```
+
+```{r}
+place_of_worship
+```
+```{r}
+ggplot() +
+  geom_sf(data = streets$osm_lines, inherit.aes = FALSE, color = "#ffbe7f", size = .4, alpha = .8) +
+  geom_sf(data = small_streets$osm_lines, inherit.aes = FALSE, color = "#a6a6a6", size = .2, alpha = .8) +
+   geom_sf(data = schools$osm_polygons, inherit.aes = FALSE, colour = "red", fill = "red", alpha = .5, size = 1) +
+  geom_sf(data = place_of_worship$osm_polygons, inherit.aes = FALSE, colour = "yellow", fill = "yellow", alpha = .5, size = 1) +
+  coord_sf(xlim = c(27.55173, 27.57521), ylim = c(-29.28752, -29.25737), expand = TRUE) +
+  geom_sf_text(data = schools$osm_polygons, aes(label = name), size = 2, hjust = 0) +
+   geom_sf_text(data = place_of_worship$osm_polygons, aes(label = name), size = 2, hjust = 0) +
+  theme_bw() +
+  labs(
+    title = "Schools on HA FOSO",
+    x = "Longitude",
+    y = "Latitude"
+  )
+```
+```{r}
+leaflet() %>%
+  addTiles() %>%
+  addPolygons(
+    data = schools$osm_polygons,
+    label = schools$osm_polygons$name
+  ) 
+```
+
